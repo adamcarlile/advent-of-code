@@ -1,6 +1,6 @@
 require 'pry'
 
-results_1 = {
+results = {
   increased: 0,
   decreased: 0
 }
@@ -8,20 +8,22 @@ results_1 = {
 data = File.read("data.txt").split("\n").map(&:to_i)
 
 data.each_cons(2) do |a, b| 
-  results_1[:increased] += 1 if (a <=> b).negative?
-  results_1[:decreased] += 1 if (a <=> b).positive?
+  results[:increased] += 1 if (a <=> b).negative?
+  results[:decreased] += 1 if (a <=> b).positive?
 end
 
-puts "Total increase: #{results_1[:increased]}"
+puts "\n====PART 1====\n"
+puts "Total increase: #{results[:increased]}"
 
-results_2 = {
+results = {
   increased: 0,
   decreased: 0
 }
 
 data.each_cons(3).map(&:sum).each_cons(2) do |a, b|
-  results_2[:increased] += 1 if (a <=> b).negative?
-  results_2[:decreased] += 1 if (a <=> b).positive?
+  results[:increased] += 1 if (a <=> b).negative?
+  results[:decreased] += 1 if (a <=> b).positive?
 end
 
-puts "Total increase: #{results_2[:increased]}"
+puts "\n====PART 2====\n"
+puts "Total increase: #{results[:increased]}"
